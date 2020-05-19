@@ -1,22 +1,31 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
-import {
- Card, Layout, Row, Col 
-} from "antd";
+import { Layout, Row, Col } from "antd";
 import { getMeetups } from "../../store/creators";
 import CardMeetup from "../../components/CardMeetup";
 import CardsSkeleton from "../../components/Skeletons/CardsSkeletons";
 
 const { Content } = Layout;
 
-const Home = () => {
+const Home = ({ history }) => {
   const dispatch = useDispatch();
-  const { meetups } = useSelector(state => state);
+  const {
+    meetups,
+    authData: {
+      data: { logged }
+    }
+  } = useSelector(state => state);
 
   useEffect(() => {
-    dispatch(getMeetups());
+    if (!meetups.firstData) {
+      dispatch(getMeetups());
+    }
   }, []);
+
+  const handleRedirect = id => {
+    history.push(`/${logged ? `meetup/${id}` : "auth"}`);
+  };
   return (
     <Content>
       <Row justify="center" align="middle" className="row-content">
@@ -27,7 +36,7 @@ const Home = () => {
             ) : (
               meetups.data.map((m, i) => (
                 <Col key={`col-${i}`} span={8}>
-                  <CardMeetup info={m} />
+                  <CardMeetup info={m} redirect={handleRedirect} />
                 </Col>
               ))
             )}

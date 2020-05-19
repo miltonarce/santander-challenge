@@ -45,7 +45,19 @@ export default {
       console.log("...do login simulation.");
       setTimeout(() => {
         if (username === "admin" && password === "1234") {
-          res({ id: 1, username, logged: remember });
+          res({
+            id: 1,
+            username,
+            logged: remember,
+            type: 1
+          });
+        } else if (username === "user" && password === "1234") {
+          res({
+            id: 2,
+            username,
+            logged: remember,
+            type: 2
+          });
         } else {
           res({
             message: "User or Password are incorrect"

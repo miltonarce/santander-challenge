@@ -7,7 +7,8 @@ import {
   DO_LOGIN_ERROR,
   CREATE_MEETUPS_START,
   CREATE_MEETUPS_SUCCESS,
-  CREATE_MEETUPS_ERROR
+  CREATE_MEETUPS_ERROR,
+  SUSCRIBE_MEETUP_START
 } from "./types";
 
 import Api from "../services/Services";
@@ -112,3 +113,10 @@ export const doLogin = (user, redirect) => async dispatch => {
     dispatch(doLoginError("Something went wrong, please try again."));
   }
 };
+
+// SUSCRIBE MEETUPS
+
+export const suscribeMeetupStart = meetup => ({
+  type: SUSCRIBE_MEETUP_START,
+  payload: { meetup }
+});

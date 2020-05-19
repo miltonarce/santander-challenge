@@ -4,12 +4,13 @@ import {
   GET_MEETUPS_ERROR,
   CREATE_MEETUPS_START,
   CREATE_MEETUPS_SUCCESS,
-  CREATE_MEETUPS_ERROR
+  CREATE_MEETUPS_ERROR,
+  SUSCRIBE_MEETUP_START
 } from "../types";
 
 const initialState = {
   data: [],
-  dataLocal: [],
+  firstData: false,
   loading: false,
   message: ""
 };
@@ -26,13 +27,15 @@ const meetupsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        data: action.payload.meetups.concat(state.dataLocal)
+        firstData: true,
+        data: action.payload.meetups.concat(state.data)
       };
     }
     case GET_MEETUPS_ERROR: {
       return {
         ...state,
         loading: false,
+        firstData: false,
         message: action.payload.message
       };
     }
@@ -46,7 +49,7 @@ const meetupsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        dataLocal: state.dataLocal.concat(action.payload.values),
+        data: state.data.concat(action.payload.values),
         message: ""
       };
     }
@@ -55,6 +58,13 @@ const meetupsReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         message: action.payload.message
+      };
+    }
+    case SUSCRIBE_MEETUP_START: {
+      const newData = state.data.filter(i => i.id !== action.payload.meetup.id);
+      return {
+        ...state,
+        data: newData.concat(action.payload.meetup)
       };
     }
     default:

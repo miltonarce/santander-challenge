@@ -8,6 +8,7 @@ import HeaderNav from "./components/HeaderNav";
 import FooterPage from "./components/FooterPage";
 import RouteAuth from "./components/RouteAuth";
 import NewMeetup from "./views/NewMeetup";
+import Meetup from "./views/Meetup";
 
 const App = () => {
   const {
@@ -22,8 +23,8 @@ const App = () => {
         <Switch>
           <Route exact component={Home} path="/" />
           <Route component={Auth} path="/auth" />
-          {/* <RouteAuth auth={logged} component={NewMeetup} path="/newmeetup" /> */}
-          <Route component={NewMeetup} path="/newmeetup" />
+          <RouteAuth auth={logged} component={NewMeetup} path="/newmeetup" />
+          <RouteAuth auth={logged} component={Meetup} path="/meetup/:id" />
         </Switch>
         <FooterPage />
       </Layout>

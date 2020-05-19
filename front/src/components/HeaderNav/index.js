@@ -6,9 +6,8 @@ import { useSelector } from "react-redux";
 
 const { Header } = Layout;
 
-const HeaderNav = props => {
+const HeaderNav = () => {
   const { authData } = useSelector(state => state);
-
   return (
     <Header className="header">
       <Link to="/">
@@ -16,21 +15,21 @@ const HeaderNav = props => {
       </Link>
       <div>
         <ul>
-          <li>
-            <Link to="/newmeetup">Crear una meetup</Link> |{" "}
-          </li>
           {authData.data.logged ? (
-            <li>{`Bienvenido! ${authData.data.username}`}</li>
+            <>
+              {authData.data.type === 1 ? (
+                <li>
+                  <Link to="/newmeetup">Crear una meetup</Link> |{" "}
+                </li>
+              ) : (
+                ""
+              )}
+              <li>{` Bienvenido! ${authData.data.username}`}</li>
+            </>
           ) : (
             <>
               <li>
                 <Link to="/auth">Iniciar sesión</Link>
-{' '}
-|
-{" "}
-              </li>
-              <li>
-                <Link to="/auth/register">Registrarse</Link>
               </li>
             </>
           )}

@@ -58,8 +58,10 @@ const NewMeetup = ({ history }) => {
       createMeetup(
         {
           ...values,
+          id: meetups.data.length + 1,
           temperature: state.weather.temperature,
-          "date-picker": moment(values["date-picker"]).format("YYYY-MM-DD")
+          "date-picker": moment(values["date-picker"]).format("YYYY-MM-DD"),
+          confirmed: []
         },
         history.push
       )
