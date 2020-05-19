@@ -1,7 +1,34 @@
 .header{
+  display:flex;
+  justify-content: space-between;
   h1{
     font-family: Balsamiq;
     color: white;
     font-size: 2.3rem;
+    max-width: 10rem;
+  }
+  div{
+    ul{
+      list-style: none;
+      li:first-child{
+        a{
+          font-weight: bold;
+        }
+      }
+      li{
+        display: inline;
+        color: white;
+        a{
+          color: white;
+          cursor: pointer;
+          transition: .3s;
+          padding: .5rem;
+          border-radius: 2px;
+        }
+        a:hover{
+          background: #098046;
+        }
+      }
+    }
   }
 }

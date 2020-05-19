@@ -1,29 +1,38 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
-import { Layout, Button, Row, Col, Card } from "antd";
+import {
+ Card, Layout, Row, Col 
+} from "antd";
 import { getMeetups } from "../../store/creators";
+import CardMeetup from "../../components/CardMeetup";
+import CardsSkeleton from "../../components/Skeletons/CardsSkeletons";
 
 const { Content } = Layout;
 
-const Home = props => {
+const Home = () => {
   const dispatch = useDispatch();
   const { meetups } = useSelector(state => state);
 
   useEffect(() => {
     dispatch(getMeetups());
   }, []);
-  console.log(meetups);
   return (
     <Content>
-      <Row justify="center">
-        {meetups.data.map(m => (
-          <Col key={m.id} span={8}>
-            <Card title={m.name} className="cards">
-              {m.body}
-            </Card>
-          </Col>
-        ))}
+      <Row justify="center" align="middle" className="row-content">
+        <Col span={12}>
+          <Row gutter={[16, 16]}>
+            {meetups.loading ? (
+              <CardsSkeleton />
+            ) : (
+              meetups.data.map((m, i) => (
+                <Col key={`col-${i}`} span={8}>
+                  <CardMeetup info={m} />
+                </Col>
+              ))
+            )}
+          </Row>
+        </Col>
       </Row>
     </Content>
   );
