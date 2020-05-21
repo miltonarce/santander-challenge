@@ -36,9 +36,8 @@ const Home = ({ history }) => {
           <p>
             Juntate, reunite, acercate a tu equipo, pero primero unite a
 {" "}
-            <strong>Meetups</strong>
-.
-</p>
+            <strong>Meetups</strong>.
+          </p>
         </div>
         <div className="banner-image" />
       </div>

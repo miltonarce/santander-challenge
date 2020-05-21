@@ -36,6 +36,15 @@ En algunos casos directamente hago un handle al store de redux sin pasar por el 
 
 - Hacer logout e ingresar como user y luego provar lo que se requiera (asistir a un evento, ver notificaciones si se crearon nuevos eventos previamente).
 
+# Tecnologías usadas
+
+- React
+- Redux, Redux-Thunk
+- Antd
+- Less
+- Webpack
+- Cypress
+
 
 
 
