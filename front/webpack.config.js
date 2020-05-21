@@ -8,11 +8,12 @@ module.exports = {
     path: path.join(__dirname, "dist"),
     filename: "bundle.js"
   },
+
   resolve: {
     extensions: [".js", ".jsx"]
   },
   devServer: {
-    port: 5000
+    port: 5000,
   },
   module: {
     rules: [
@@ -46,6 +47,7 @@ module.exports = {
                 'layout-header-background': '#0C9D57',
                 'layout-body-background': "#ffffff",
                 'layout-footer-background': "#f0f2f5",
+                'card-head-color': "#0C9D57",
               }, javascriptEnabled: true
             }
           }

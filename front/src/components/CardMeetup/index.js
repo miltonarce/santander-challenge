@@ -15,8 +15,14 @@ const CardMeetup = ({ info, redirect }) => (
     ]}
   >
     <p>{info.description}</p>
-    <p>{`Fecha del evento ${info["date-picker"]}`}</p>
-    <p>{`Temperatura para ese dia C°${info.temperature} grados.`}</p>
+    <p>
+      <label>Fecha del evento </label>
+      {` ${info["date-picker"]}`}
+    </p>
+    <p className="last-p">
+      <label>Temperatura para ese dia </label>
+      {` C°${info.temperature} grados.`}
+    </p>
   </Card>
 );
 

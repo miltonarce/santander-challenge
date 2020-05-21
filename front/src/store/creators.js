@@ -8,7 +8,9 @@ import {
   CREATE_MEETUPS_START,
   CREATE_MEETUPS_SUCCESS,
   CREATE_MEETUPS_ERROR,
-  SUSCRIBE_MEETUP_START
+  SUSCRIBE_MEETUP_START,
+  CLEAN_QUEUE_NOT,
+  DO_LOGOUT
 } from "./types";
 
 import Api from "../services/Services";
@@ -64,6 +66,14 @@ export const getMeetupsError = message => ({
   payload: {
     message
   }
+});
+
+export const cleanQueuNot = () => ({
+  type: CLEAN_QUEUE_NOT
+});
+
+export const doLogout = () => ({
+  type: DO_LOGOUT
 });
 
 export const getMeetups = () => async dispatch => {

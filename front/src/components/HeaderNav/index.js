@@ -2,12 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Layout } from "antd";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { doLogout } from "../../store/creators";
 
 const { Header } = Layout;
 
 const HeaderNav = () => {
+  const dispatch = useDispatch();
   const { authData } = useSelector(state => state);
+  const handleLogout = () => {
+    dispatch(doLogout());
+  };
   return (
     <Header className="header">
       <Link to="/">
@@ -24,7 +29,12 @@ const HeaderNav = () => {
               ) : (
                 ""
               )}
-              <li>{` Bienvenido! ${authData.data.username}`}</li>
+              <li> 
+{' '}
+{` Bienvenido! ${authData.data.username} `} | </li>
+              <li onClick={handleLogout}>
+                <Link to="#">Salir</Link>
+              </li>
             </>
           ) : (
             <>

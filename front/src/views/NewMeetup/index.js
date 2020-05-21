@@ -75,12 +75,12 @@ const NewMeetup = ({ history }) => {
   return (
     <Content>
       <Row justify="center" align="middle" className="row-content">
-        <Col span={12}>
+        <Col span={16}>
           <h2>Crear una nueva Meetup</h2>
         </Col>
       </Row>
       <Row justify="center" align="middle" className="row-content">
-        <Col span={12}>
+        <Col span={16} className="spinner-content-new">
           {meetups.loading ? (
             <Spinner />
           ) : (
@@ -99,6 +99,8 @@ const NewMeetup = ({ history }) => {
   );
 };
 
-NewMeetup.propTypes = {};
+NewMeetup.propTypes = {
+  history: PropTypes.object
+};
 
 export default NewMeetup;

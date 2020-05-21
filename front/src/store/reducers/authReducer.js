@@ -1,4 +1,9 @@
-import { DO_LOGIN_START, DO_LOGIN_SUCCESS, DO_LOGIN_ERROR } from "../types";
+import {
+  DO_LOGIN_START,
+  DO_LOGIN_SUCCESS,
+  DO_LOGIN_ERROR,
+  DO_LOGOUT
+} from "../types";
 
 const initialState = {
   data: {},
@@ -27,6 +32,14 @@ const authReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         message: action.payload.message
+      };
+    }
+    case DO_LOGOUT: {
+      return {
+        ...state,
+        data: {},
+        loading: false,
+        message: ""
       };
     }
     default:

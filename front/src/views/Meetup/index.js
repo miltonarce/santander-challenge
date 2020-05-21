@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
-import {
- Layout, Row, Col, Avatar, Button 
-} from "antd";
-// import { UserOutlined } from "@antd-design/icons";
+import { Layout, Row, Col, Avatar, Button, icon, Tooltip } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 import Spinner from "../../components/Spinner";
 import { suscribeMeetupStart } from "../../store/creators";
 
@@ -35,33 +33,35 @@ const Meetup = ({ match }) => {
 
   return (
     <Content>
-      <Row justify="center" align="middle" className="row-content">
+      <Row justify="center" align="top" className="row-content">
         {isLoading ? (
           <Spinner />
         ) : (
           <>
-            <Col span={12}>
-              <section>
+            <Col span={16}>
+              <section className="main-section-meetup">
                 <h2>{meetup.title}</h2>
                 <p>{meetup.description}</p>
               </section>
             </Col>
-            <Col span={4}>
-              <aside>
+            <Col span={6} offset={1}>
+              <aside className="additional-data">
                 <section>
+                  <h2>Información adicional</h2>
                   <p>
-                    El evento será el dia
+                    <label>El evento será el dia</label>
+                    {" "}
                     {meetup["date-picker"]}
-.
+                    .
 {" "}
                   </p>
                   <p>
-                    Ese día hara C°
                     {" "}
-                    {meetup.temperature}
+                    <label> Ese día hará</label>
 {' '}
-grados de temperatura.
-</p>
+C°
+{meetup.temperature} grados de temperatura.
+                  </p>
                   <div>
                     <ul>
                       {meetup.confirmed.length === 0 ? (
@@ -69,9 +69,11 @@ grados de temperatura.
                       ) : (
                         <>
                           <li>Asistentes:</li>
-                          {meetup.confirmed.map(p => (
-                            <li>
-                              <Avatar>{p.id}</Avatar>
+                          {meetup.confirmed.map((p, i) => (
+                            <li key={`a-${i}`}>
+                              <Tooltip title={p.username} placement="bottom">
+                                <Avatar icon={<UserOutlined />} />
+                              </Tooltip>
                             </li>
                           ))}
                         </>

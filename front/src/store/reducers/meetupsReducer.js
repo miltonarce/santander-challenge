@@ -5,11 +5,13 @@ import {
   CREATE_MEETUPS_START,
   CREATE_MEETUPS_SUCCESS,
   CREATE_MEETUPS_ERROR,
-  SUSCRIBE_MEETUP_START
+  SUSCRIBE_MEETUP_START,
+  CLEAN_QUEUE_NOT
 } from "../types";
 
 const initialState = {
   data: [],
+  queueNot: [],
   firstData: false,
   loading: false,
   message: ""
@@ -50,6 +52,7 @@ const meetupsReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         data: state.data.concat(action.payload.values),
+        queueNot: state.queueNot.concat(action.payload.values),
         message: ""
       };
     }
@@ -65,6 +68,12 @@ const meetupsReducer = (state = initialState, action) => {
       return {
         ...state,
         data: newData.concat(action.payload.meetup)
+      };
+    }
+    case CLEAN_QUEUE_NOT: {
+      return {
+        ...state,
+        queueNot: []
       };
     }
     default:

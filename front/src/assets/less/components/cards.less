@@ -1,0 +1,27 @@
+.cards{
+  p:first-child{
+    font-weight: 400;
+    margin-bottom: 2.0rem;
+    min-height: 7rem;
+    max-height: 7rem;
+    display: block;
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  p{
+    font-weight:300;
+    label{
+      color: @primary-color;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: .8rem;
+    }
+  }
+  .last-p{
+    margin-bottom: 0;
+  }
+}

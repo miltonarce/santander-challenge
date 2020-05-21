@@ -11,6 +11,11 @@ const Auth = ({ history }) => (
   <Content>
     <Row justify="center" align="middle" className="row-content">
       <Col span={12}>
+        <h2>INGRESE SU USUARIO Y CONTRASEÑA</h2>
+      </Col>
+    </Row>
+    <Row justify="center" align="middle" className="row-content">
+      <Col span={8} className="content-form-login">
         {history.location.pathname === "/auth/register" ? (
           <Register />
         ) : (

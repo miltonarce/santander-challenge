@@ -16,7 +16,7 @@ const Login = ({ redirect }) => {
       span: 8
     },
     wrapperCol: {
-      span: 16
+      span: 24
     }
   };
   const tailLayout = {
@@ -34,13 +34,14 @@ const Login = ({ redirect }) => {
   };
 
   if (authData.loading) {
-    return <Spinner />;
+    return <Spinner className="spinner" />;
   }
 
   return (
     <Form
       {...layout}
       name="basic"
+      className="form-login"
       initialValues={{
         remember: true
       }}

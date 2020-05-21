@@ -1,12 +1,46 @@
+body{
+font-family: 'Roboto', sans-serif;
+}
+
 .row-content{
   margin: 3rem;
   h2{
-    color: #0c9d57;
+    color: @primary-color;
     text-transform: uppercase;
   }
 }
 
 .content-spinner{
   margin-top: 10rem;
-  margin-bottom: 10rem;
+  margin-bottom: 6rem;
+}
+
+.banner-welcome{
+  position: absolute;
+  margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+text-align: center;
+  h2{
+    margin-top: 8rem;
+    font-size: 3rem;
+    margin-bottom: 0;
+  }
+ h2, p{
+   color: white;
+   text-align: center;
+ }
+ p{
+   font-size: 1.5rem;
+   font-weight: lighter;
+ }
+}
+
+.banner-image{
+  width: 100%;
+  height: 28.75rem;
+  background: url("../../images/welcome-image3.jpg") no-repeat center bottom fixed;
+  background-size: cover;
+
 }
