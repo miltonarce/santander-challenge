@@ -10,13 +10,13 @@ const { Content } = Layout;
 
 const Meetup = ({ match }) => {
   const dispatch = useDispatch();
-  const { meetups, authData } = useSelector(state => state);
+  const { meetups, authData } = useSelector((state) => state);
 
   const [meetup, setMeetup] = useState({});
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    setMeetup(meetups.data.find(m => m.id == match.params.id));
+    setMeetup(meetups.data.find((m) => m.id == match.params.id));
     setLoading(false);
   }, [meetups.data]);
 
@@ -25,7 +25,7 @@ const Meetup = ({ match }) => {
       dispatch(
         suscribeMeetupStart({
           ...meetup,
-          confirmed: meetup.confirmed.concat(authData.data)
+          confirmed: meetup.confirmed.concat(authData.data),
         })
       );
     }
@@ -38,29 +38,24 @@ const Meetup = ({ match }) => {
           <Spinner />
         ) : (
           <>
-            <Col span={16}>
+            <Col xs={24} lg={16}>
               <section className="main-section-meetup">
                 <h2>{meetup.title}</h2>
                 <p>{meetup.description}</p>
               </section>
             </Col>
-            <Col span={6} offset={1}>
+            <Col xs={24} lg={6} offset={1}>
               <aside className="additional-data">
                 <section>
                   <h2>Información adicional</h2>
                   <p>
-                    <label>El evento será el dia</label>
-                    {" "}
-                    {meetup["date-picker"]}
-                    .
-{" "}
+                    <label>El evento será el dia</label> {meetup["date-picker"]}
+                    .{" "}
                   </p>
                   <p>
                     {" "}
-                    <label> Ese día hará</label>
-{' '}
-C°
-{meetup.temperature} grados de temperatura.
+                    <label> Ese día hará</label> C°
+                    {meetup.temperature} grados de temperatura.
                   </p>
                   <div>
                     <ul>
@@ -83,7 +78,7 @@ C°
                 </section>
                 <section>
                   <div>
-                    {meetup.confirmed.find(i => i.id == authData.data.id) ? (
+                    {meetup.confirmed.find((i) => i.id == authData.data.id) ? (
                       <p>Usted ya está suscripto a este evento.</p>
                     ) : (
                       <Button type="primary" onClick={handleSuscribe}>
@@ -102,7 +97,7 @@ C°
 };
 
 Meetup.propTypes = {
-  history: PropTypes.object
+  history: PropTypes.object,
 };
 
 export default Meetup;
